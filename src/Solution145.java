@@ -49,7 +49,7 @@ public class Solution145 {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode currentNode = root, tmp;
         while (currentNode != null || !stack.isEmpty()) {
-            //先一直往左走到底，边走边入栈
+            //先一直往右走到底，边走边入栈
             while (currentNode != null) {
                 list.add(currentNode.val);
                 stack.push(currentNode);

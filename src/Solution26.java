@@ -35,7 +35,7 @@
  * }
  */
 public class Solution26 {
-    // 两个指针i和j，i负责保证前面的元素都不同，j负责把不同的元素复制到i后面
+    // 两个指针i和j，i负责保证前面的元素都不同，j负责把不同的元素复制到i后面，返回长度
     public int removeDuplicates(int[] nums) {
         int i = 0;
         for (int j = 1; j < nums.length; j++) {

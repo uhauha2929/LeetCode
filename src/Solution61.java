@@ -1,6 +1,5 @@
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
@@ -22,15 +21,16 @@ import java.util.Queue;
  * 向右旋转 3 步: 0->1->2->NULL
  * 向右旋转 4 步: 2->0->1->NULL
  */
-public class Solution61 {
-    public static class ListNode {
-        int val;
-        ListNode next;
+class ListNode {
+    int val;
+    ListNode next;
 
-        ListNode(int x) {
-            val = x;
-        }
+    ListNode(int x) {
+        val = x;
     }
+}
+
+public class Solution61 {
 
     public void printNode(ListNode node) {
         if (node != null) {
