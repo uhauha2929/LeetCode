@@ -23,8 +23,8 @@ import java.util.List;
  */
 public class S17 {
 
-    private String[] digits2Letters = {"", "", "abc", "def", "ghi", "jkl",
-            "mno", "pqrs", "tuv", "wxyz"};
+    private static final String[] DIGITS2LETTERS
+            = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
@@ -33,7 +33,7 @@ public class S17 {
         }
         result.add("");  // 这步不可少
         for (int i = 0; i < digits.length(); i++) {
-            String letters = digits2Letters[digits.charAt(i) - '0'];
+            String letters = DIGITS2LETTERS[digits.charAt(i) - '0'];
             result = combine(letters, result);
         }
         return result;
@@ -54,24 +54,22 @@ public class S17 {
         if (digits.length() == 0) {
             return result;
         }
-        return backtracking(result, digits, "", 0);
+        backtracking(result, digits, "");
+        return result;
     }
 
-    private List<String> backtracking(List<String> list, String digits,
-                                      String s, int layer) {
-        String letters = digits2Letters[digits.charAt(layer) - '0'];
+    private void backtracking(List<String> list, String digits, String s) {
+        if (s.length() == digits.length()) {
+            list.add(s);
+            return;
+        }
+        String letters = DIGITS2LETTERS[digits.charAt(s.length()) - '0'];
         for (int i = 0; i < letters.length(); i++) {
             s += letters.charAt(i);
-            // 到达叶子结点加入结果集
-            if (layer == digits.length() - 1) {
-                list.add(s);
-            } else { // 否则进行递归
-                backtracking(list, digits, s, layer + 1);
-            }
-            // 到达叶子结点或递归结束后，每次都要向上层回溯，即删除最后一个字母
+            backtracking(list, digits, s);
+            // 递归结束后，每次都要向上层回溯，即删除最后一个字母
             s = s.substring(0, s.length() - 1);
         }
-        return list;
     }
 
     public static void main(String[] args) {

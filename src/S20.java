@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Stack;
 
 /**
@@ -32,26 +33,31 @@ import java.util.Stack;
  */
 public class S20 {
 
+    private HashMap<Character, Character> mappings;
+
+    public S20() {
+        this.mappings = new HashMap<Character, Character>();
+        this.mappings.put('(', ')');
+        this.mappings.put('{', '}');
+        this.mappings.put('[', ']');
+    }
+
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
         for (Character c : s.toCharArray()) {
-            if (c == '(' || c == '[' || c == '{')
+            if (this.mappings.containsKey(c))
                 stack.push(c);
             else {
-                if (stack.isEmpty()) return false;
-                if (c == ')' && stack.pop() != '(') {
+                if (stack.isEmpty())
                     return false;
-                } else if (c == ']' && stack.pop() != '[') {
+                if (this.mappings.get(stack.pop()) != c)
                     return false;
-                } else if (c == '}' && stack.pop() != '{') {
-                    return false;
-                }
             }
         }
         return stack.isEmpty();
     }
 
     public static void main(String[] args) {
-        System.out.println(new S20().isValid(")"));
+        System.out.println(new S20().isValid("{[]}"));
     }
 }

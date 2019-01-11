@@ -43,7 +43,7 @@ public class S90 {
     // 回溯法
     public List<List<Integer>> subsetsWithDup2(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);  // 对于重复数字，排序不可少
+        Arrays.sort(nums);  // 排序为了使得重复数字相邻
         backtrack(result, new ArrayList<>(), nums, 0);
         return result;
     }
