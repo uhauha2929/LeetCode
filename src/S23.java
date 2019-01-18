@@ -21,12 +21,11 @@ public class S23 {
         ListNode(int x) {
             val = x;
         }
-    }
 
-    public void printNode(ListNode node) {
-        if (node != null) {
-            System.out.print(node.val + "\t");
-            printNode(node.next);
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
         }
     }
 
@@ -34,7 +33,6 @@ public class S23 {
         ListNode head = new ListNode(0);
         ListNode cur1 = l1, cur2 = l2, cur3 = head;
         while (cur1 != null && cur2 != null) {
-
             if (cur1.val < cur2.val) {
                 cur3.next = cur1;
                 cur3 = cur1;
@@ -46,16 +44,12 @@ public class S23 {
             }
         }
         // 如果两个链表其中之一没有遍历完，把剩余的接上
-        if (cur1 != null)
-            cur3.next = cur1;
-        if (cur2 != null)
-            cur3.next = cur2;
-
+        cur3.next = cur1 == null ? cur2 : cur1;
         return head.next;
     }
 
+    // 效率不高
     public ListNode mergeKLists(ListNode[] lists) {
-        // 效率不高
         ListNode head = new ListNode(Integer.MIN_VALUE);
         for (ListNode node : lists) {
             head = mergeTwoLists(head, node);
@@ -102,8 +96,6 @@ public class S23 {
     }
 
     public static void main(String[] args) {
-        S23 s = new S23();
-
         ListNode l1 = new ListNode(1);
         l1.next = new ListNode(4);
         l1.next.next = new ListNode(5);
@@ -116,7 +108,7 @@ public class S23 {
         l3.next = new ListNode(6);
 
         ListNode[] lists = {l1, l2, l3};
-        ListNode node = s.mergeKLists3(lists);
-        s.printNode(node);
+        ListNode node = new S23().mergeKLists(lists);
+        System.out.println(node);
     }
 }

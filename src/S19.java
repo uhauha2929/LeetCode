@@ -23,19 +23,19 @@ public class S19 {
         ListNode(int x) {
             val = x;
         }
-    }
 
-    public void print(ListNode node) {
-        if (node == null)
-            return;
-        System.out.print(node.val + "\t");
-        print(node.next);
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
+        }
     }
 
     /**
      * 一次遍历删除单向链表的倒数第n个节点
+     *
      * @param head 头节点
-     * @param n 倒数第n个
+     * @param n    倒数第n个
      * @return 删除后的链表
      */
     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -59,15 +59,14 @@ public class S19 {
         return head;
     }
 
+
     public static void main(String[] args) {
         ListNode node = new ListNode(1);
         node.next = new ListNode(2);
         node.next.next = new ListNode(3);
 
-        S19 s = new S19();
-        s.print(node);
-        ListNode newNode = s.removeNthFromEnd(node, 3);
-        System.out.println();
-        s.print(newNode);
+        System.out.println(node);
+        ListNode newNode = new S19().removeNthFromEnd(node, 3);
+        System.out.println(newNode);
     }
 }

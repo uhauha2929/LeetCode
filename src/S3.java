@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 给定一个字符串，找出不含有重复字符的最长子串的长度。
@@ -22,26 +24,43 @@ import java.util.HashMap;
  */
 public class S3 {
 
+    // 滑动窗口
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.isEmpty())
-            return 0;
+        int n = s.length();
+        Set<Character> set = new HashSet<>(); // 在滑动窗口内判断是否有重复
+        int ans = 0, i = 0, j = 0;
+        while (i < n && j < n) {
+            // try to extend the range [i, j]
+            if (!set.contains(s.charAt(j))) {
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
+            } else {
+                set.remove(s.charAt(i++));
+            }
+        }
+        return ans;
+    }
+
+    // 优化的滑动窗口
+    public int lengthOfLongestSubstring2(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
-        int maxLengh = 0;
+        int maxLength = 0;
         int lastPos = 0;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (map.keySet().contains(c) && map.get(c) > lastPos) {
+            if (map.containsKey(c)) {
                 // 如果出现重复，保存最近的一次重复的位置，只能往右走
-                lastPos = map.get(c);
+                lastPos = Math.max(map.get(c), lastPos);
             }
             // 每次比较当前字符与上次重复位置的距离，取最大值
-            maxLengh = Math.max((i - lastPos + 1), maxLengh);
+            maxLength = Math.max((i - lastPos + 1), maxLength);
             map.put(c, i + 1);
         }
-        return maxLengh;
+        return maxLength;
     }
 
-    public int lengthOfLongestSubstring2(String s) {
+    // 类似上面
+    public int lengthOfLongestSubstring3(String s) {
         int n = s.length(), ans = 0;
         // 可以用数组替换map
         int[] index = new int[128]; // current index of character

@@ -80,7 +80,6 @@ public class S416 {
 
 
     public static void main(String[] args) {
-        int[] nums = {1, 5, 11, 5};
-        System.out.println(new S416().canPartition2(nums));
+        System.out.println(new S416().canPartition2(new int[] {1, 5, 11, 5}));
     }
 }

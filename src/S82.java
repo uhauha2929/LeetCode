@@ -19,12 +19,11 @@ public class S82 {
         ListNode(int x) {
             val = x;
         }
-    }
 
-    public void printNode(ListNode node) {
-        if (node != null) {
-            System.out.print(node.val + "\t");
-            printNode(node.next);
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
         }
     }
 
@@ -55,6 +54,25 @@ public class S82 {
         return start.next;
     }
 
+    public ListNode deleteDuplicates2(ListNode head) {
+        if (head == null) return null;
+        if (head.next == null) return head;
+        if (head.val == head.next.val) {
+            int sameVal = head.val;
+            while (head != null) {
+                if (head.val == sameVal) {
+                    head = head.next;
+                } else {
+                    return deleteDuplicates(head);
+                }
+            }
+            return null;
+        } else {
+            head.next = deleteDuplicates2(head.next);
+            return head;
+        }
+    }
+
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         head.next = new ListNode(1);
@@ -63,9 +81,8 @@ public class S82 {
         head.next.next.next.next = new ListNode(3);
 
         S82 s = new S82();
-        s.printNode(head);
-        System.out.println();
-        head = s.deleteDuplicates(head);
-        s.printNode(head);
+        System.out.println(head);
+        head = new S82().deleteDuplicates2(head);
+        System.out.println(head);
     }
 }

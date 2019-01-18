@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * 给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。
  * <p>
@@ -41,6 +43,16 @@
 public class S27 {
     public int removeElement(int[] nums, int val) {
         int i = 0;
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != val) {
+                nums[i++] = nums[j];
+            }
+        }
+        return i;
+    }
+
+    public int removeElement2(int[] nums, int val) {
+        int i = 0;
         int n = nums.length;
         while (i < n) {
             // 如果遇到等于val的值，则复制最后一个数到此处，同时数组长度减去1
@@ -55,21 +67,10 @@ public class S27 {
         return n;
     }
 
-    public int removeElement2(int[] nums, int val) {
-        int i = 0;
-        for (int j = 0; j < nums.length; j++) {
-            if (nums[j] != val) {
-                nums[i++] = nums[j];
-            }
-        }
-        return i;
-    }
-
     public static void main(String[] args) {
         int[] nums = {0, 1, 2, 2, 3, 0, 4, 2};
         int len = new S27().removeElement2(nums, 2);
-        for (int i = 0; i < len; i++) {
-            System.out.println(nums[i]);
-        }
+        System.out.println(Arrays.toString(nums));
+        System.out.println(len);
     }
 }

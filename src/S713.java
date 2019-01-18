@@ -58,9 +58,7 @@ public class S713 {
     }
 
     public static void main(String[] args) {
-        int[] nums = {10, 5, 2, 6};
-        int k = 100;
         System.out.println(new S713()
-                .numSubarrayProductLessThanK2(nums, k));
+                .numSubarrayProductLessThanK2(new int[] {10, 5, 2, 6}, 100));
     }
 }

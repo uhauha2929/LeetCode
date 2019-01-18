@@ -24,17 +24,16 @@ public class S25 {
         ListNode(int x) {
             val = x;
         }
-    }
 
-    public void printNode(ListNode node) {
-        if (node != null) {
-            System.out.print(node.val + "\t");
-            printNode(node.next);
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
         }
     }
 
+
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (k <= 1) return head;
         ListNode preHead = new ListNode(0);
         preHead.next = head;
         ListNode pre = preHead;
@@ -70,11 +69,9 @@ public class S25 {
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
 
-        S25 s = new S25();
-        s.printNode(head);
-        System.out.println();
-        head = s.reverseKGroup(head, 3);
-        s.printNode(head);
+        System.out.println(head);
+        head = new S25().reverseKGroup(head, 3);
+        System.out.println(head);
     }
 }
 

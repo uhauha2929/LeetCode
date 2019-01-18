@@ -42,15 +42,22 @@
  * 解释: M = 1000, CM = 900, XC = 90, IV = 4.
  */
 public class S12 {
-    String M[] = {"", "M", "MM", "MMM"};
-    String C[] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-    String X[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-    String I[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+    private static String[] str = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    private static int[] value = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     public String intToRoman(int num) {
-        return M[num / 1000] + C[(num % 1000) / 100] + X[(num % 100) / 10] + I[num % 10];
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (num > 0) {
+            while (num >= value[i]) {
+                num -= value[i];
+                sb.append(str[i]);
+            }
+            i++;
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        System.out.println(new S12().intToRoman(1994));
+        System.out.println(new S12().intToRoman(4));
     }
 }

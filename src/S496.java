@@ -36,9 +36,9 @@ public class S496 {
         int top = -1;
         for (int i = 0; i < nums2.length; i++) {
             while (top > -1 && nums2[i] > stack[top]) {
-                map.put(stack[top--], nums2[i]);
+                map.put(stack[top--], nums2[i]);  // 这样每次出栈都是下一个比它大的数
             }
-            stack[++top] = nums2[i];
+            stack[++top] = nums2[i];  // 栈里按递减顺序存放
         }
         for (int i = 0; i < nums1.length; i++) {
             nums1[i] = map.getOrDefault(nums1[i], -1);
@@ -48,7 +48,7 @@ public class S496 {
 
 
     public static void main(String[] args) {
-        int[] nums1 = {2, 4}, nums2 = {1, 2, 3, 4};
+        int[] nums1 = {4, 1, 2}, nums2 = {4, 3, 1, 2};
         System.out.println(Arrays.toString(new S496()
                 .nextGreaterElement(nums1, nums2)));
     }

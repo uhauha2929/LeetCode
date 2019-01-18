@@ -30,12 +30,11 @@ public class S61 {
         ListNode(int x) {
             val = x;
         }
-    }
 
-    public void printNode(ListNode node) {
-        if (node != null) {
-            System.out.print(node.val + "\t");
-            printNode(node.next);
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
         }
     }
 
@@ -52,6 +51,7 @@ public class S61 {
             cur = cur.next;
         }
         k = k % len;  // 比如k=2000000000可k=2的效果一致
+        if (k == 0) return head;
         while (k > 0) {
             // 从尾部移除，并添加到头部，执行k次
             ListNode last = deque.removeLast();
@@ -75,9 +75,8 @@ public class S61 {
         head.next = new ListNode(2);
         head.next.next = new ListNode(3);
         S61 s = new S61();
-        s.printNode(head);
-        System.out.println();
-        head = s.rotateRight(head, 2000000000);
-        s.printNode(head);
+        System.out.println(head);
+        head = new S61().rotateRight(head, 2000000000);
+        System.out.println(head);
     }
 }

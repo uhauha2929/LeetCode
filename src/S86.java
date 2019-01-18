@@ -11,23 +11,18 @@
 public class S86 {
 
     private static class ListNode {
-
         int val;
-
         ListNode next;
-
-
         ListNode(int x) {
             val = x;
         }
 
-    }
-
-    private void print(ListNode head) {
-        if (head != null) {
-            System.out.println(head.val);
-            print(head.next);
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
         }
+
     }
 
     // 将链表分成两部分，最后将两部分连起来
@@ -61,8 +56,7 @@ public class S86 {
         head.next.next.next = new ListNode(2);
         head.next.next.next.next = new ListNode(5);
         head.next.next.next.next.next = new ListNode(2);
-        S86 s = new S86();
-        head = s.partition(head, 3);
-        s.print(head);
+        head = new S86().partition(head, 3);
+        System.out.println(head);
     }
 }

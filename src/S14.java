@@ -18,7 +18,7 @@ public class S14 {
         if (strs == null || strs.length == 0) return "";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < strs[0].length(); i++) {
-            Boolean flag = true;
+            boolean flag = true;  // 是否剩余字符串中都包含这个字符
             for (int j = 1; j < strs.length; j++) {
                 if (i >= strs[j].length())
                     return sb.toString();

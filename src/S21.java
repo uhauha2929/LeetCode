@@ -15,13 +15,18 @@ public class S21 {
         ListNode(int x) {
             val = x;
         }
+
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
+        }
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);
         ListNode cur1 = l1, cur2 = l2, cur3 = head;
         while (cur1 != null && cur2 != null) {
-
             if (cur1.val < cur2.val) {
                 cur3.next = cur1;
                 cur3 = cur1;
@@ -33,19 +38,8 @@ public class S21 {
             }
         }
         // 如果两个链表其中之一没有遍历完，把剩余的接上
-        if (cur1 != null)
-            cur3.next = cur1;
-        if (cur2 != null)
-            cur3.next = cur2;
-
+        cur3.next = cur1 == null ? cur2 : cur1;
         return head.next;
-    }
-
-    public void printNode(ListNode node) {
-        if (node != null) {
-            System.out.print(node.val + "\t");
-            printNode(node.next);
-        }
     }
 
     public static void main(String[] args) {
@@ -57,9 +51,7 @@ public class S21 {
         l2.next = new ListNode(3);
         l2.next.next = new ListNode(4);
 
-        S21 s = new S21();
-        ListNode l3 = s.mergeTwoLists(l1, l2);
-        s.printNode(l3);
-
+        ListNode l3 = new S21().mergeTwoLists(l1, l2);
+        System.out.println(l3);
     }
 }

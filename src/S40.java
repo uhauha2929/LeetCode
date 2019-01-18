@@ -51,9 +51,8 @@ public class S40 {
         for (int i = start; i < candidates.length; i++) {
             if (candidates[i] > target)  // 避免target<0
                 continue;
-            if (i > start && candidates[i] == candidates[i - 1]) {
+            if (i > start && candidates[i] == candidates[i - 1])
                 continue;  // 相邻的重复数跳过
-            }
             cur.push(candidates[i]);
             backtracking(res, cur, candidates, target - candidates[i], i + 1); // 从下一个位置开始
             cur.pop();

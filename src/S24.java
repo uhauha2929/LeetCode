@@ -17,14 +17,14 @@ public class S24 {
         ListNode(int x) {
             val = x;
         }
-    }
 
-    public void printNode(ListNode node) {
-        if (node != null) {
-            System.out.print(node.val + "\t");
-            printNode(node.next);
+        @Override
+        public String toString() {
+            if (this.next == null) return "" + this.val;
+            return this.val + "->" + this.next.toString();
         }
     }
+
 
     public ListNode swapPairs(ListNode head) {
         if (head == null || head.next == null) return head;
@@ -53,10 +53,8 @@ public class S24 {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
 
-        S24 s = new S24();
-        s.printNode(head);
-        System.out.println();
-        head = s.swapPairs2(head);
-        s.printNode(head);
+        System.out.println(head);
+        head = new S24().swapPairs(head);
+        System.out.println(head);
     }
 }

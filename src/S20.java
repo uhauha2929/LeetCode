@@ -1,5 +1,6 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
-import java.util.Stack;
 
 /**
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
@@ -43,7 +44,7 @@ public class S20 {
     }
 
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
         for (Character c : s.toCharArray()) {
             if (this.mappings.containsKey(c))
                 stack.push(c);

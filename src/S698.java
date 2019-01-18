@@ -18,13 +18,13 @@ public class S698 {
     public boolean canPartitionKSubsets(int[] nums, int k) {
         int sum = 0;
         for (int num : nums) sum += num;
-        if (k <= 0 || sum % k != 0) return false;
-        int[] visited = new int[nums.length];
+        if (sum % k != 0) return false;
+        boolean[] visited = new boolean[nums.length];
         return canPartition(nums, visited, nums.length - 1,
                 k, 0, sum / k);
     }
 
-    private boolean canPartition(int[] nums, int[] visited, int start,
+    private boolean canPartition(int[] nums, boolean[] visited, int start,
                                  int k, int cur_sum, int target) {
         if (k == 1) return true;
         if (cur_sum > target) return false;
@@ -32,12 +32,12 @@ public class S698 {
             return canPartition(nums, visited, nums.length - 1,
                     k - 1, 0, target);
         for (int i = start; i > 0; i--) {
-            if (visited[i] == 0) {
-                visited[i] = 1;
+            if (!visited[i]) {
+                visited[i] = true;
                 if (canPartition(nums, visited, i - 1,
                         k, cur_sum + nums[i], target))
                     return true;
-                visited[i] = 0;
+                visited[i] = false;
             }
         }
         return false;
@@ -45,7 +45,7 @@ public class S698 {
 
 
     public static void main(String[] args) {
-        int nums[] = {10, 12, 1, 2, 10, 7, 5, 19, 13, 1};
+        int[] nums = {10, 12, 1, 2, 10, 7, 5, 19, 13, 1};
         System.out.println(new S698()
                 .canPartitionKSubsets(nums, 4));
     }
