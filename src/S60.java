@@ -84,7 +84,7 @@ public class S60 {
 
     public String getPermutation2(int n, int k) {
         StringBuilder sb = new StringBuilder();
-        backtrack(sb, n, k, n, new boolean[n + 1]);
+        search(sb, n, k, n, new boolean[n + 1]);
         return sb.toString();
     }
 
@@ -95,7 +95,7 @@ public class S60 {
     }
 
     /**
-     * 使用回溯法
+     * 递归搜索
      * 例如n=3时所有全排列构成如下的树：
      * 1       2      3
      * / \    /  \   /  \
@@ -106,28 +106,25 @@ public class S60 {
      * @param l    表示树的层数
      * @param used 表示数字是否被访问过
      */
-    private void backtrack(StringBuilder sb, int n, int k, int l, boolean[] used) {
+    private void search(StringBuilder sb, int n, int k, int l, boolean[] used) {
+        if (sb.length() == n)
+            return;
         for (int i = 1; i <= n; ++i) {
             if (used[i])
                 continue;
             int count = factorial(l - 1);  // 计算当前数字为根节点合法路径的数目
             if (count < k) {
-                k -= count;  // 如果当前子树的所有路径小于k，则跳过，同时k要减去该数目
+                k -= count;  // 如果当前所有路径小于k，则跳过，同时k要减去该数目
                 continue;
             }
             sb.append(i);
             used[i] = true;
-            backtrack(sb, n, k, l - 1, used);
-            if (sb.length() == n)
-                return;
-
-            sb.deleteCharAt(-1);
-            used[i] = false;
+            search(sb, n, k, l - 1, used);
         }
     }
 
 
     public static void main(String[] args) {
-        System.out.println(new S60().getPermutation(4, 9));
+        System.out.println(new S60().getPermutation2(4, 9));
     }
 }

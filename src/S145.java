@@ -65,6 +65,7 @@ public class S145 {
         return list;
     }
 
+    // 参见问题Solution590
     public List<Integer> postorderTraversal3(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         TreeNode currentNode = root, pre = root, tmp;

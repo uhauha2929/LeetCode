@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -48,23 +49,14 @@ public class S23 {
         return head.next;
     }
 
-    // 效率不高
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode head = new ListNode(Integer.MIN_VALUE);
-        for (ListNode node : lists) {
-            head = mergeTwoLists(head, node);
-        }
-        return head.next;
-    }
-
-    public ListNode mergeKLists2(ListNode[] lists) {
         if (lists == null || lists.length == 0)
             return null;
         return merge(lists, 0, lists.length - 1);
     }
 
+    // 采用分治法
     public ListNode merge(ListNode[] lists, int left, int right) {
-        // 采用分治法
         if (left >= right)
             return lists[left];
         int mid = (left + right) / 2;
@@ -73,13 +65,14 @@ public class S23 {
         return mergeTwoLists(l1, l2);
     }
 
-    public ListNode mergeKLists3(ListNode[] lists) {
+    public ListNode mergeKLists2(ListNode[] lists) {
         if (lists.length == 0) return null;
         // PriorityQueue是基于堆排序的，这里设定每次出队的都是最大的
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, (o1, o2) -> {
-            if (o1.val > o2.val) return 1;
-            else if (o1.val == o2.val) return 0;
-            else return -1;
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                return o1.val - o2.val;
+            }
         });
         ListNode head = new ListNode(0), tmp = head;
         // 把所有头节点全部入队
