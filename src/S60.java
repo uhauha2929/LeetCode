@@ -84,13 +84,12 @@ public class S60 {
 
     public String getPermutation2(int n, int k) {
         StringBuilder sb = new StringBuilder();
-        search(sb, n, k, n, new boolean[n + 1]);
+        search(sb, n, k, factorial(n - 1), n - 1, new boolean[n + 1]);
         return sb.toString();
     }
 
     private int factorial(int n) {
-        if (n == 1 || n == 0)
-            return 1;
+        if (n == 1 || n == 0) return 1;
         return n * factorial(n - 1);
     }
 
@@ -102,24 +101,21 @@ public class S60 {
      * 2   3  1   3  1   2
      * /   /  /   /  /   /
      * 3   2  3   1  2   1
-     *
-     * @param l    表示树的层数
-     * @param used 表示数字是否被访问过
      */
-    private void search(StringBuilder sb, int n, int k, int l, boolean[] used) {
-        if (sb.length() == n)
-            return;
+    private void search(StringBuilder sb, int n, int k, int c, int l, boolean[] used) {
         for (int i = 1; i <= n; ++i) {
             if (used[i])
                 continue;
-            int count = factorial(l - 1);  // 计算当前数字为根节点合法路径的数目
-            if (count < k) {
-                k -= count;  // 如果当前所有路径小于k，则跳过，同时k要减去该数目
+            if (c < k) {
+                k -= c;  // 如果当前所有路径小于k，则跳过，同时k要减去该数目
                 continue;
             }
             sb.append(i);
             used[i] = true;
-            search(sb, n, k, l - 1, used);
+            if (l > 0) {
+                c /= l;
+            } else break;
+            search(sb, n, k, c, l - 1, used);
         }
     }
 
