@@ -12,11 +12,11 @@ import java.util.LinkedList;
  * 示例：
  * 给定二叉树 [3,9,20,null,null,15,7]，
  * <p>
- * 3
- * / \
- * 9  20
- * /  \
- * 15   7
+ * *     3
+ * *   /   \
+ * *  9    20
+ * *      /  \
+ * *     15   7
  * 返回它的最大深度 3 。
  */
 public class S104 {
@@ -39,18 +39,18 @@ public class S104 {
 
     public int maxDepth2(TreeNode root) {
         LinkedList<TreeNode> q = new LinkedList<>();
-        if(root == null){
+        if (root == null) {
             return 0;
         }
         int cnt = 0;
         q.add(root);
         while (!q.isEmpty()) {
             cnt++;
-            for(int i = 0; i < q.size(); i++){
+            for (int i = 0; i < q.size(); i++) {
                 TreeNode node = q.poll();
-                if(node.left != null)
+                if (node.left != null)
                     q.add(node.left);
-                if(node.right != null)
+                if (node.right != null)
                     q.add(node.right);
             }
         }

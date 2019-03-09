@@ -63,7 +63,7 @@ public class TreeNode {
     }
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(new Integer[]{1, null, 2, 3, null, 4});
+        TreeNode root = new TreeNode(new Integer[]{1, null, 2, 3});
         inOrder(root);
     }
 }

@@ -71,17 +71,14 @@ public class S215 {
      */
     private int partition(int[] nums, int l, int r) {
         // ---- 取中间值或随机值可以提高效率
-        int mid = l + (r - l) / 2;
-        if (nums[mid] < nums[r]) {
-            swap(nums, mid, r);
+//        int m = (l + r) / 2;
+        int m = l + (int) (Math.random() * (r - l));
+        // ---- 把最大的放第一个
+        if (nums[m] > nums[l]) {
+            int t = nums[m];
+            nums[m] = nums[l];
+            nums[l] = t;
         }
-        if (nums[mid] < nums[l]) {
-            swap(nums, mid, l);
-        }
-        if (nums[l] < nums[r]) {
-            swap(nums, l, r);
-        }
-        // ----
         int key = nums[l];
 
         while (l < r) {
@@ -96,12 +93,6 @@ public class S215 {
         }
         nums[r] = key;
         return r;
-    }
-
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[j];
-        nums[j] = nums[i];
-        nums[i] = temp;
     }
 
     public static void main(String[] args) {
