@@ -1,5 +1,7 @@
 package S521_540;
 
+import utils.TreeNode;
+
 import java.util.Stack;
 
 /**
@@ -8,27 +10,18 @@ import java.util.Stack;
  * 例如：
  * <p>
  * 输入: 二叉搜索树:
- * 5
- * /   \
- * 2     13
+ * *    5
+ * *  /   \
+ * * 2     13
  * <p>
  * 输出: 转换为累加树:
- * 18
- * /   \
- * 20     13
+ * *     18
+ * *    /   \
+ * *  20     13
  */
 public class S538 {
 
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
+    // 右, 根, 左
     public TreeNode convertBST(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode current = root, tmp;
@@ -64,21 +57,10 @@ public class S538 {
         }
     }
 
-    public void print(TreeNode root) {
-        if (root != null) {
-            System.out.println(root.val);
-            print(root.left);
-            print(root.right);
-        }
-    }
-
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(2);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(3);
-        S538 s = new S538();
-        s.print(root);
-        root = s.convertBST2(root);
-        s.print(root);
+        TreeNode root = new TreeNode(new Integer[]{2, 1, 3});
+        TreeNode.inOrder(root);
+        root = new S538().convertBST2(root);
+        TreeNode.inOrder(root);
     }
 }

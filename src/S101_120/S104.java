@@ -1,5 +1,7 @@
 package S101_120;
 
+import utils.TreeNode;
+
 import java.util.LinkedList;
 
 /**
@@ -20,16 +22,6 @@ import java.util.LinkedList;
  * 返回它的最大深度 3 。
  */
 public class S104 {
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     public int maxDepth(TreeNode root) {
         if (root == null)
@@ -59,10 +51,7 @@ public class S104 {
 
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
+        TreeNode root = new TreeNode(new Integer[]{3, 9, 20, null, null, 5});
         System.out.println(new S104().maxDepth2(root));
     }
 }

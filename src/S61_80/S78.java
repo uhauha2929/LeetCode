@@ -30,7 +30,7 @@ public class S78 {
         if (nums == null) {
             return result;
         }
-        result.add(new ArrayList<>());
+        result.add(new ArrayList<>());  // 添加一个空集[]
         for (int i = 0; i < nums.length; i++) {
             List<List<Integer>> temp = new ArrayList<>();
             //you'll have to create a new one here, otherwise, it'll throw ConcurrentModificationException.
@@ -48,18 +48,16 @@ public class S78 {
 
     /**
      * 使用回溯法解决，相当于对这棵树从左到右进行深度优先遍历，每个结点即为子集。
-     *                        []
-     *                    /   \     \
-     *                   /     \     \
-     *                  /       \     \
-     *              [1]         [2]  [3]
-     *            /    \        /
-     *           /      \      /
-     *        [1 2]    [1 3] [2 3]
-     *       /
-     *   [1 2 3]
-     * @param nums 不重复数组
-     * @return 数组的所有子集
+     * *                        []
+     * *                    /    \    \
+     * *                   /      \    \
+     * *                  /        \    \
+     * *              [1]         [2]    [3]
+     * *            /    \        /
+     * *           /      \      /
+     * *        [1 2]    [1 3] [2 3]
+     * *       /
+     * *   [1 2 3]
      */
     public List<List<Integer>> subsets2(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -79,18 +77,18 @@ public class S78 {
 
     /**
      * 使用位运算
-     * 000 对应[]
-     * 001 对应[3]
-     * 010 对应[2]
-     * 011 对应[2,3]
-     * 100 …
-     * 101
-     * 110
-     * 111
+     * 0->000 对应[]
+     * 1->001 对应[3]
+     * 2->010 对应[2]
+     * 3->011 对应[2,3]
+     * 4->100 …
+     * 5->101
+     * 6->110
+     * 7->111
      */
     public List<List<Integer>> subsets3(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        // i 代表所有可能范围内的数
+        // i 代表所有可能范围内的数,
         for (int i = 0; i < 1 << nums.length; i++) {
             List<Integer> list = new ArrayList<>();
             // j 则只有一位为1，其它位为0
@@ -107,6 +105,6 @@ public class S78 {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
-        System.out.println(new S78().subsets3(nums));
+        System.out.println(new S78().subsets(nums));
     }
 }

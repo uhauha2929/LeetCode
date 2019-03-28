@@ -40,15 +40,13 @@ public class S852 {
         int l = 0, r = A.length - 1;
         while (l < r) {
             int m = (l + r) / 2;
-            if (A[m - 1] < A[m] && A[m] > A[m + 1]) {
-                return m;
-            } else if (A[m - 1] < A[m]) {
-                l = m;
-            } else if (A[m] > A[m + 1]) {
+            if (A[m] > A[m + 1]) {
                 r = m;
+            } else {
+                l = m + 1;
             }
         }
-        throw new RuntimeException();
+        return l;
     }
 
 

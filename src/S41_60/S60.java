@@ -86,38 +86,30 @@ public class S60 {
 
     public String getPermutation2(int n, int k) {
         StringBuilder sb = new StringBuilder();
-        search(sb, n, k, factorial(n - 1), n - 1, new boolean[n + 1]);
+        backtrack(sb, n, k, n, new boolean[n + 1]);
         return sb.toString();
     }
 
     private int factorial(int n) {
-        if (n == 1 || n == 0) return 1;
+        if (n == 1 || n == 0)
+            return 1;
         return n * factorial(n - 1);
     }
 
-    /**
-     * 递归搜索
-     * 例如n=3时所有全排列构成如下的树：
-     * 1       2      3
-     * / \    /  \   /  \
-     * 2   3  1   3  1   2
-     * /   /  /   /  /   /
-     * 3   2  3   1  2   1
-     */
-    private void search(StringBuilder sb, int n, int k, int c, int l, boolean[] used) {
+    private void backtrack(StringBuilder sb, int n, int k, int l, boolean[] used) {
         for (int i = 1; i <= n; ++i) {
             if (used[i])
                 continue;
-            if (c < k) {
-                k -= c;  // 如果当前所有路径小于k，则跳过，同时k要减去该数目
+            int count = factorial(l - 1);
+            if (count < k) {
+                k -= count;
                 continue;
             }
             sb.append(i);
             used[i] = true;
-            if (l > 0) {
-                c /= l;
-            } else break;
-            search(sb, n, k, c, l - 1, used);
+            backtrack(sb, n, k, l - 1, used);
+            if (sb.length() == n)
+                return;
         }
     }
 
