@@ -65,8 +65,30 @@ public class S137 {
         return one;
     }
 
+    /**
+     * 对于a,b 相对应的第i位( 0 <= i <= 31)
+     *
+     * 初始化: a[i]=0, b[i]=0
+     * 每次执行一次如下代码:
+     * b = (b ^ nums[i]) & ~a;
+     * a = (a ^ nums[i]) & ~b;
+     * a[i]和b[i]的进行如下更新:
+     * 如果该位第一次遇到1: a[i]=0, b[i]=1
+     * 如果该位第二次遇到1: a[i]=1, b[i]=0
+     * 如果该位第三次遇到1: a[i]=0, b[i]=0
+     * 所以b最后保留了多余的那个1的位.
+     */
+    public int singleNumber4(int[] nums) {
+        int a = 0, b = 0;
+        for (int num : nums) {
+            b = (b ^ num) & ~a;
+            a = (a ^ num) & ~b;
+        }
+        return b;
+    }
+
 
     public static void main(String[] args) {
-        System.out.println(new S137().singleNumber3(new int[]{0, 1, 0, 1, 0, 1, 99}));
+        System.out.println(new S137().singleNumber4(new int[]{0, 1, 0, 1, 0, 1, 99}));
     }
 }

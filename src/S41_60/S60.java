@@ -32,7 +32,7 @@ import java.util.List;
 public class S60 {
 
     /**
-     * 在n的所有全排列中，查找第k大的排列，可以直接找规律
+     * 逆康拓展开:
      * 对于n=4, k=15 找到k=15排列的过程:
      * <p>
      * 1 + 对2,3,4的全排列 (3!个)
@@ -86,35 +86,32 @@ public class S60 {
 
     public String getPermutation2(int n, int k) {
         StringBuilder sb = new StringBuilder();
-        backtrack(sb, n, k, n, new boolean[n + 1]);
+        int[] factorials = new int[n + 1];
+        factorials[0] = 1;
+        for (int i = 1; i <= n; ++i)
+            factorials[i] = factorials[i - 1] * i;
+        recursion(sb, k, factorials, n, new boolean[n + 1]);
         return sb.toString();
     }
 
-    private int factorial(int n) {
-        if (n == 1 || n == 0)
-            return 1;
-        return n * factorial(n - 1);
-    }
-
-    private void backtrack(StringBuilder sb, int n, int k, int l, boolean[] used) {
-        for (int i = 1; i <= n; ++i) {
-            if (used[i])
-                continue;
-            int count = factorial(l - 1);
+    private void recursion(StringBuilder sb, int k, int[] factorials, int l, boolean[] used) {
+        for (int i = 1; i < factorials.length; ++i) {
+            if (used[i]) continue;
+            int count = factorials[l - 1];
             if (count < k) {
                 k -= count;
                 continue;
             }
             sb.append(i);
             used[i] = true;
-            backtrack(sb, n, k, l - 1, used);
-            if (sb.length() == n)
+            recursion(sb, k, factorials, l - 1, used);
+            if (sb.length() == factorials.length - 1)
                 return;
         }
     }
 
 
     public static void main(String[] args) {
-        System.out.println(new S60().getPermutation2(4, 9));
+        System.out.println(new S60().getPermutation2(4, 15));
     }
 }

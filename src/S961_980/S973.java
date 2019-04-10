@@ -1,7 +1,6 @@
 package S961_980;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -40,13 +39,10 @@ public class S973 {
     }
 
     public int[][] kClosest(int[][] points, int K) {
-        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                double diff = dist(o1) - dist(o2);
-                if (diff == 0) return 0;
-                return diff > 0 ? 1 : -1;
-            }
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> {
+            double diff = dist(o1) - dist(o2);
+            if (diff == 0) return 0;
+            return diff > 0 ? 1 : -1;
         });
         queue.addAll(Arrays.asList(points));
         int[][] res = new int[K][];

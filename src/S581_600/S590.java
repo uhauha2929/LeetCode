@@ -1,6 +1,11 @@
 package S581_600;
 
-import java.util.*;
+import utils.Node;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * 给定一个 N 叉树，返回其节点值的后序遍历。
@@ -15,19 +20,6 @@ import java.util.*;
  * 说明: 递归法很简单，你可以使用迭代法完成此题吗?
  */
 public class S590 {
-
-    private static class Node {
-        int val;
-        List<Node> children;
-
-        public Node() {
-        }
-
-        Node(int _val, List<Node> _children) {
-            val = _val;
-            children = _children;
-        }
-    }
 
     public List<Integer> postorder(Node root) {
         List<Integer> res = new ArrayList<>();
@@ -95,11 +87,11 @@ public class S590 {
     public static void main(String[] args) {
         List<Node> children = new ArrayList<>();
         List<Node> grandchildren = new ArrayList<>();
-        grandchildren.add(new Node(5, null));
-        grandchildren.add(new Node(6, null));
+        grandchildren.add(new Node(5));
+        grandchildren.add(new Node(6));
         children.add(new Node(3, grandchildren));
-        children.add(new Node(2, null));
-        children.add(new Node(4, null));
+        children.add(new Node(2));
+        children.add(new Node(4));
         Node root = new Node(1, children);
         System.out.println(new S590().postorder2(root));
     }
