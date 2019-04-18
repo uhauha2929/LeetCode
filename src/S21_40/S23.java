@@ -39,12 +39,7 @@ public class S23 {
     public ListNode mergeKLists2(ListNode[] lists) {
         if (lists.length == 0) return null;
         // PriorityQueue是基于堆排序的，这里设定每次出队的都是最大的
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode o1, ListNode o2) {
-                return o1.val - o2.val;
-            }
-        });
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, Comparator.comparingInt(o -> o.val));
         ListNode head = new ListNode(0), tmp = head;
         // 把所有头节点全部入队
         for (ListNode l : lists) {
@@ -64,7 +59,7 @@ public class S23 {
         ListNode l2 = new ListNode(new int[]{1, 3, 4});
         ListNode l3 = new ListNode(new int[]{2, 6});
         ListNode[] lists = {l1, l2, l3};
-        ListNode node = new S23().mergeKLists(lists);
+        ListNode node = new S23().mergeKLists2(lists);
         System.out.println(node);
     }
 }

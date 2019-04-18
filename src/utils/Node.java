@@ -2,6 +2,7 @@ package utils;
 
 import java.util.List;
 
+// N叉树
 public class Node {
     public int val;
     public List<Node> children;

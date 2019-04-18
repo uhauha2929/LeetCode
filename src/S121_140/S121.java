@@ -23,14 +23,13 @@ public class S121 {
 
     // 类似Solution53
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length == 0)
-            return 0;
-        int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
+        // 分别表示迄今为止得到的最大利润和最小价格
+        int maxProfit = Integer.MIN_VALUE, minPrice = Integer.MAX_VALUE;
         for (int price : prices) {
-            min = Math.min(min, price);
-            max = Math.max(max, price - min);
+            minPrice = Math.min(minPrice, price);
+            maxProfit = Math.max(maxProfit, price - minPrice);
         }
-        return max;
+        return maxProfit;
     }
 
     public static void main(String[] args) {
