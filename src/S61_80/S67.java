@@ -55,8 +55,20 @@ public class S67 {
         return new String(res);
     }
 
+    public String addBinary2(String a, String b) {
+        StringBuilder sb = new StringBuilder();
+        int carry = 0, i = a.length() - 1, j = b.length() - 1;
+        while (i >= 0 || j >= 0 || carry != 0) {
+            if (i >= 0) carry += a.charAt(i--) - '0';
+            if (j >= 0) carry += b.charAt(j--) - '0';
+            sb.insert(0, carry % 2);
+            carry /= 2;
+        }
+        return sb.toString();
+    }
+
 
     public static void main(String[] args) {
-        System.out.println(new S67().addBinary("1", "11"));
+        System.out.println(new S67().addBinary2("1", "11"));
     }
 }

@@ -25,7 +25,6 @@ import S681_700.S698;
  * 火柴数组的长度不超过15。
  */
 public class S473 {
-    // https://leetcode.com/problems/partition-to-k-equal-sum-subsets/discuss/108730/JavaC%2B%2BStraightforward-dfs-solution
     public boolean makesquare(int[] nums) {
         if (nums == null || nums.length == 0) return false;
         return new S698().canPartitionKSubsets(nums, 4);

@@ -16,32 +16,31 @@ package S681_700;
  * 0 < nums[i] < 10000
  */
 public class S698 {
-    // https://leetcode.com/problems/partition-to-k-equal-sum-subsets/discuss/108730/JavaC%2B%2BStraightforward-dfs-solution
+    // https://leetcode.com/problems/partition-to-k-equal-sum-subsets/discuss/180014/Thinking-Process-of-Recursion-in-Java
     public boolean canPartitionKSubsets(int[] nums, int k) {
-        int sum = 0;
-        for (int num : nums) sum += num;
-        if (sum % k != 0) return false;
-        boolean[] visited = new boolean[nums.length];
-        return canPartition(nums, visited, nums.length - 1,
-                k, 0, sum / k);
+        int sum = 0, maxNum = 0;
+        for (int num : nums) {
+            sum += num;
+            maxNum = Math.max(maxNum, num);
+        }
+        if (sum % k != 0 || maxNum > sum / k) return false;
+        return canKSubsetsSum(nums, k, sum / k, 0, new boolean[nums.length], 0);
     }
 
-    private boolean canPartition(int[] nums, boolean[] visited, int start,
-                                 int k, int cur_sum, int target) {
-        if (k == 1) return true;
-        if (cur_sum > target) return false;
-        if (cur_sum == target)
-            return canPartition(nums, visited, nums.length - 1,
-                    k - 1, 0, target);
-        for (int i = start; i > 0; i--) {
+    private boolean canKSubsetsSum(int[] nums, int k, int targetSum, int curSum, boolean[] visited, int innerStart) {
+        if (k == 0) return true; // Outer base case for number of subsets.
+        else if (curSum > targetSum) return false; // Inner base case for current subset sum.
+        else if (curSum == targetSum)
+            return canKSubsetsSum(nums, k - 1, targetSum, 0, visited, 0); // Inner base case for current subset sum.
+
+        for (int i = innerStart; i < nums.length; i++) {
             if (!visited[i]) {
                 visited[i] = true;
-                if (canPartition(nums, visited, i - 1,
-                        k, cur_sum + nums[i], target))
-                    return true;
+                if (canKSubsetsSum(nums, k, targetSum, curSum + nums[i], visited, i + 1)) return true;
                 visited[i] = false;
             }
         }
+
         return false;
     }
 
