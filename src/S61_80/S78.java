@@ -5,11 +5,8 @@ import java.util.List;
 
 /**
  * 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
- * <p>
  * 说明：解集不能包含重复的子集。
- * <p>
  * 示例:
- * <p>
  * 输入: nums = [1,2,3]
  * 输出:
  * [
@@ -25,6 +22,12 @@ import java.util.List;
  */
 public class S78 {
 
+    /**
+     * []
+     * [1]
+     * [2] [1,2]
+     * [3] [1,3],[2,3],[1,2,3]
+     */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums == null) {
@@ -47,17 +50,14 @@ public class S78 {
     }
 
     /**
-     * 使用回溯法解决，相当于对这棵树从左到右进行深度优先遍历，每个结点即为子集。
-     * *                        []
-     * *                    /    \    \
-     * *                   /      \    \
-     * *                  /        \    \
-     * *              [1]         [2]    [3]
-     * *            /    \        /
-     * *           /      \      /
-     * *        [1 2]    [1 3] [2 3]
-     * *       /
-     * *   [1 2 3]
+     * 使用回溯法解决，相当于对这棵树从左到右进行深度优先遍历，每个路径即为子集。
+     * *              []
+     * *           /  |  \
+     * *          1   2   3
+     * *         / \  |
+     * *        2  3  3
+     * *        |
+     * *        3
      */
     public List<List<Integer>> subsets2(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -105,6 +105,6 @@ public class S78 {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
-        System.out.println(new S78().subsets(nums));
+        System.out.println(new S78().subsets2(nums));
     }
 }

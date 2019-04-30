@@ -18,36 +18,37 @@ package S141_160;
  * minStack.top();      --> 返回 0.
  * minStack.getMin();   --> 返回 -2.
  */
-class MinStack {
-
-    private int top = -1;
-    private int[] minIndex = new int[9999];  // 保存当前栈顶位置最小值的索引
-    private int[] stack = new int[9999];
-
-    public MinStack() {
-    }
-
-    public void push(int x) {
-        stack[++top] = x;
-        if (top > 0)
-            minIndex[top] = x < stack[minIndex[top - 1]] ? top : minIndex[top - 1];
-    }
-
-    public void pop() {
-        if (top > -1)
-            top--;
-    }
-
-    public int top() {
-        return stack[top];
-    }
-
-    public int getMin() {
-        return stack[minIndex[top]];
-    }
-}
 
 public class S155 {
+
+    static class MinStack {
+
+        private int top = -1;
+        private int[] minIndex = new int[9999];  // 保存当前栈顶位置最小值的索引
+        private int[] stack = new int[9999];
+
+        public MinStack() {
+        }
+
+        public void push(int x) {
+            stack[++top] = x;
+            if (top > 0)
+                minIndex[top] = x < stack[minIndex[top - 1]] ? top : minIndex[top - 1];
+        }
+
+        public void pop() {
+            if (top > -1)
+                top--;
+        }
+
+        public int top() {
+            return stack[top];
+        }
+
+        public int getMin() {
+            return stack[minIndex[top]];
+        }
+    }
 
 
     public static void main(String[] args) {

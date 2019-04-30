@@ -29,46 +29,45 @@ import java.util.Set;
  * words数组长度范围为[1,1000]。
  * words[i]的长度范围为[1,30]。
  */
-class Node {
-    char val;
-    boolean end;
-    Node[] children;
-
-    Node(char val) {
-        this.val = val;
-    }
-}
-
-class Trie {
-
-    Node[] children;
-
-    Trie() {
-        children = new Node[26];
-    }
-
-    void insert(String word) {
-        if (word == null || word.length() == 0)
-            return;
-        insert(0, word.toCharArray(), children);
-    }
-
-    private void insert(int l, char[] chars, Node[] children) {
-        int i = chars[l] - 'a';
-        if (children[i] == null) {
-            children[i] = new Node(chars[l]);
-        }
-        if (l == chars.length - 1) {
-            children[i].end = true; // 设置最后一个字符的结束标志
-            return; // 最后一个字符的children=null
-        }
-        if (children[i].children == null)
-            children[i].children = new Node[26];
-        insert(l + 1, chars, children[i].children);
-    }
-}
-
 public class S720 {
+    class Node {
+        char val;
+        boolean end;
+        Node[] children;
+
+        Node(char val) {
+            this.val = val;
+        }
+    }
+
+    class Trie {
+
+        Node[] children;
+
+        Trie() {
+            children = new Node[26];
+        }
+
+        void insert(String word) {
+            if (word == null || word.length() == 0)
+                return;
+            insert(0, word.toCharArray(), children);
+        }
+
+        private void insert(int l, char[] chars, Node[] children) {
+            int i = chars[l] - 'a';
+            if (children[i] == null) {
+                children[i] = new Node(chars[l]);
+            }
+            if (l == chars.length - 1) {
+                children[i].end = true; // 设置最后一个字符的结束标志
+                return; // 最后一个字符的children=null
+            }
+            if (children[i].children == null)
+                children[i].children = new Node[26];
+            insert(l + 1, chars, children[i].children);
+        }
+    }
 
     private String longestWord = "";
 

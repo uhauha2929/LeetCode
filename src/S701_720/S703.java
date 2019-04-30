@@ -20,35 +20,35 @@ import java.util.*;
  * 说明:
  * 你可以假设 nums 的长度≥ k-1 且k ≥ 1。
  */
-class KthLargest {
-    private Queue<Integer> queue;
-    private int size;
-
-    public KthLargest(int k, int[] nums) {
-        queue = new PriorityQueue<>(k); // 每次返回最小的, 队列中只保留k个
-        size = k;
-        for (Integer num : nums)
-            add(num);
-    }
-
-    public int add(int val) {
-        if (queue.size() < size)
-            queue.offer(val);
-        else {
-            // 比最小的大, 删除最小的, 添加这个数
-            if (queue.peek() < val) {
-                queue.poll();
-                queue.offer(val);
-            }
-
-        }
-        // 返回最小的数, 就是第k大的数
-        return queue.peek();
-    }
-}
-
 
 public class S703 {
+
+    static class KthLargest {
+        private Queue<Integer> queue;
+        private int size;
+
+        public KthLargest(int k, int[] nums) {
+            queue = new PriorityQueue<>(k); // 每次返回最小的, 队列中只保留k个
+            size = k;
+            for (Integer num : nums)
+                add(num);
+        }
+
+        public int add(int val) {
+            if (queue.size() < size)
+                queue.offer(val);
+            else {
+                // 比最小的大, 删除最小的, 添加这个数
+                if (queue.peek() < val) {
+                    queue.poll();
+                    queue.offer(val);
+                }
+
+            }
+            // 返回最小的数, 就是第k大的数
+            return queue.peek();
+        }
+    }
 
     public static void main(String[] args) {
         int k = 3;

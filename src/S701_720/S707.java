@@ -29,121 +29,121 @@ package S701_720;
  * 操作次数将在  [1, 1000] 之内。
  * 请不要使用内置的 LinkedList 库。
  */
-class MyLinkedList {
-
-    private Node first;
-    private Node last;
-    private int size;
-
-    private class Node {
-
-        private int val;
-        private Node prev;
-        private Node next;
-
-        private Node(int val, Node prev, Node next) {
-            this.val = val;
-            this.prev = prev;
-            this.next = next;
-        }
-    }
-
-    public int get(int index) {
-        if (index < 0 || index > size - 1) {
-            return -1;
-        }
-        return nodeAt(index).val;
-    }
-
-    public void addAtHead(int val) {
-        linkFirst(val);
-    }
-
-    public void addAtTail(int val) {
-        linkLast(val);
-    }
-
-    public void addAtIndex(int index, int val) {
-        if (index < 0 || index > size) {
-            return;
-        }
-        if (index == size) {
-            linkLast(val);
-        } else {
-            linkBefore(index, val);
-        }
-    }
-
-    public void deleteAtIndex(int index) {
-        if (index < 0 || index > size - 1) {
-            return;
-        }
-        Node node = nodeAt(index);
-        if (node.prev != null) {
-            node.prev.next = node.next;
-        } else {
-            first = node.next;
-        }
-        if (node.next != null) {
-            node.next.prev = node.prev;
-        } else {
-            last = node.prev;
-        }
-        size--;
-    }
-
-    private void linkBefore(int index, int val) {
-        Node node = nodeAt(index);
-        Node newNode = new Node(val, node.prev, node);
-        if (node.prev != null) {
-            node.prev.next = newNode;
-        } else {
-            first = newNode;
-        }
-        node.prev = newNode;
-        size++;
-    }
-
-    private void linkFirst(int val) {
-        Node newNode = new Node(val, null, first);
-        if (first != null) {
-            first.prev = newNode;
-        } else {
-            last = newNode;
-        }
-        first = newNode;
-        size++;
-    }
-
-    private void linkLast(int val) {
-        Node newNode = new Node(val, last, null);
-        if (last != null) {
-            last.next = newNode;
-        } else {
-            first = newNode;
-        }
-        last = newNode;
-        size++;
-    }
-
-    private Node nodeAt(int index) {
-        if (index < (size >> 1)) {
-            Node node = first;
-            for (int i = 0; i < index; i++) {
-                node = node.next;
-            }
-            return node;
-        } else {
-            Node node = last;
-            for (int i = size - 1; i > index; i--) {
-                node = node.prev;
-            }
-            return node;
-        }
-    }
-}
-
 public class S707 {
+
+    static class MyLinkedList {
+
+        private Node first;
+        private Node last;
+        private int size;
+
+        private class Node {
+
+            private int val;
+            private Node prev;
+            private Node next;
+
+            private Node(int val, Node prev, Node next) {
+                this.val = val;
+                this.prev = prev;
+                this.next = next;
+            }
+        }
+
+        public int get(int index) {
+            if (index < 0 || index > size - 1) {
+                return -1;
+            }
+            return nodeAt(index).val;
+        }
+
+        public void addAtHead(int val) {
+            linkFirst(val);
+        }
+
+        public void addAtTail(int val) {
+            linkLast(val);
+        }
+
+        public void addAtIndex(int index, int val) {
+            if (index < 0 || index > size) {
+                return;
+            }
+            if (index == size) {
+                linkLast(val);
+            } else {
+                linkBefore(index, val);
+            }
+        }
+
+        public void deleteAtIndex(int index) {
+            if (index < 0 || index > size - 1) {
+                return;
+            }
+            Node node = nodeAt(index);
+            if (node.prev != null) {
+                node.prev.next = node.next;
+            } else {
+                first = node.next;
+            }
+            if (node.next != null) {
+                node.next.prev = node.prev;
+            } else {
+                last = node.prev;
+            }
+            size--;
+        }
+
+        private void linkBefore(int index, int val) {
+            Node node = nodeAt(index);
+            Node newNode = new Node(val, node.prev, node);
+            if (node.prev != null) {
+                node.prev.next = newNode;
+            } else {
+                first = newNode;
+            }
+            node.prev = newNode;
+            size++;
+        }
+
+        private void linkFirst(int val) {
+            Node newNode = new Node(val, null, first);
+            if (first != null) {
+                first.prev = newNode;
+            } else {
+                last = newNode;
+            }
+            first = newNode;
+            size++;
+        }
+
+        private void linkLast(int val) {
+            Node newNode = new Node(val, last, null);
+            if (last != null) {
+                last.next = newNode;
+            } else {
+                first = newNode;
+            }
+            last = newNode;
+            size++;
+        }
+
+        private Node nodeAt(int index) {
+            if (index < (size >> 1)) {
+                Node node = first;
+                for (int i = 0; i < index; i++) {
+                    node = node.next;
+                }
+                return node;
+            } else {
+                Node node = last;
+                for (int i = size - 1; i > index; i--) {
+                    node = node.prev;
+                }
+                return node;
+            }
+        }
+    }
 
     public static void main(String[] args) {
         MyLinkedList linkedList = new MyLinkedList();

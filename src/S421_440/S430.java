@@ -17,28 +17,28 @@ import java.util.LinkedList;
  * 输出:
  * 1-2-3-7-8-11-12-9-10-4-5-6-NULL
  */
-class Node {
-    public int val;
-    public Node prev;
-    public Node next;
-    public Node child;
-
-    public Node() {
-    }
-
-    public Node(int _val) {
-        val = _val;
-    }
-
-    public Node(int _val, Node _prev, Node _next, Node _child) {
-        val = _val;
-        prev = _prev;
-        next = _next;
-        child = _child;
-    }
-}
 
 public class S430 {
+     class Node {
+        public int val;
+        public Node prev;
+        public Node next;
+        public Node child;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, Node _prev, Node _next, Node _child) {
+            val = _val;
+            prev = _prev;
+            next = _next;
+            child = _child;
+        }
+    }
 
     private Node tail;
 

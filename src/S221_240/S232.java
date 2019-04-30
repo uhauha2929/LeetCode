@@ -24,47 +24,47 @@ import java.util.Stack;
  * 你所使用的语言也许不支持栈。你可以使用 list 或者 deque（双端队列）来模拟一个栈，只要是标准的栈操作即可。
  * 假设所有操作都是有效的 （例如，一个空的队列不会调用 pop 或者 peek 操作）。
  */
-class MyQueue {
-
-    private Stack<Integer> pushStack;
-    private Stack<Integer> popStack;
-
-    public MyQueue() {
-        pushStack = new Stack<>();
-        popStack = new Stack<>();
-    }
-
-
-    public void push(int x) {
-        while (!popStack.isEmpty()) {
-            pushStack.push(popStack.pop());
-        }
-        pushStack.push(x);
-    }
-
-
-    public int pop() {
-        while (!pushStack.isEmpty()) {
-            popStack.push(pushStack.pop());
-        }
-        return popStack.pop();
-    }
-
-
-    public int peek() {
-        while (!pushStack.isEmpty()) {
-            popStack.push(pushStack.pop());
-        }
-        return popStack.peek();
-    }
-
-
-    public boolean empty() {
-        return pushStack.isEmpty() && popStack.isEmpty();
-    }
-}
-
 public class S232 {
+
+    static class MyQueue {
+
+        private Stack<Integer> pushStack;
+        private Stack<Integer> popStack;
+
+        public MyQueue() {
+            pushStack = new Stack<>();
+            popStack = new Stack<>();
+        }
+
+
+        public void push(int x) {
+            while (!popStack.isEmpty()) {
+                pushStack.push(popStack.pop());
+            }
+            pushStack.push(x);
+        }
+
+
+        public int pop() {
+            while (!pushStack.isEmpty()) {
+                popStack.push(pushStack.pop());
+            }
+            return popStack.pop();
+        }
+
+
+        public int peek() {
+            while (!pushStack.isEmpty()) {
+                popStack.push(pushStack.pop());
+            }
+            return popStack.peek();
+        }
+
+
+        public boolean empty() {
+            return pushStack.isEmpty() && popStack.isEmpty();
+        }
+    }
 
     public static void main(String[] args) {
         MyQueue queue = new MyQueue();

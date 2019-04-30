@@ -12,14 +12,12 @@ package S361_380;
  * 输入: n = 10, pick = 6
  * 输出: 6
  */
-class GuessGame {
 
-    int guess(int n) {
+public class S374 {
+
+    private int guess(int n) {
         return Integer.compare(1, n);
     }
-}
-
-public class S374 extends GuessGame {
 
     public int guessNumber(int n) {
         int i = 1, j = n;

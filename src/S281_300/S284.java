@@ -16,37 +16,37 @@ import java.util.List;
  * 最后一次调用 next() 返回 3，末尾元素。在此之后调用 hasNext() 应该返回 false。
  * 进阶：你将如何拓展你的设计？使之变得通用化，从而适应所有的类型，而不只是整数型？
  */
-class PeekingIterator implements Iterator<Integer> {
-
-    private Iterator<Integer> iterator;
-    private Integer cache = null; // 第一次peek时, 缓存迭代的元素
-
-    public PeekingIterator(Iterator<Integer> iter) {
-        iterator = iter;
-    }
-
-    public Integer peek() {
-        if (cache == null)
-            cache = iterator.next();
-        return cache;
-    }
-
-    @Override
-    public Integer next() {
-        if (cache == null)
-            return iterator.next();
-        Integer temp = cache;
-        cache = null;
-        return temp;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return cache != null || iterator.hasNext();
-    }
-}
-
 public class S284 {
+
+    static class PeekingIterator implements Iterator<Integer> {
+
+        private Iterator<Integer> iterator;
+        private Integer cache = null; // 第一次peek时, 缓存迭代的元素
+
+        public PeekingIterator(Iterator<Integer> iter) {
+            iterator = iter;
+        }
+
+        public Integer peek() {
+            if (cache == null)
+                cache = iterator.next();
+            return cache;
+        }
+
+        @Override
+        public Integer next() {
+            if (cache == null)
+                return iterator.next();
+            Integer temp = cache;
+            cache = null;
+            return temp;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return cache != null || iterator.hasNext();
+        }
+    }
 
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1, 2, 3);
