@@ -30,6 +30,7 @@ import java.util.Set;
  * words[i]的长度范围为[1,30]。
  */
 public class S720 {
+
     class Node {
         char val;
         boolean end;
