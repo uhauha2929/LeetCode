@@ -1,4 +1,4 @@
-package S01_20;
+package S1_20;
 
 import java.util.*;
 
