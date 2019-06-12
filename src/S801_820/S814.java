@@ -9,16 +9,17 @@ import utils.TreeNode;
  * 示例1:
  * 输入: [1,null,0,0,1]
  * 输出: [1,null,0,null,1]
- **      1            1
- **       \            \
- **        0            0
- **       / \            \
- **      0   1            1
+ * *      1            1
+ * *       \            \
+ * *        0            0
+ * *       / \            \
+ * *      0   1            1
  */
 public class S814 {
 
     public TreeNode pruneTree(TreeNode root) {
-        allZeros(root);
+        // 避免只有一个0的情况
+        if (allZeros(root)) return null;
         return root;
     }
 
