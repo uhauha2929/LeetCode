@@ -32,8 +32,8 @@ public class Contents {
                             return Files.list(dir);
                         } catch (IOException e) {
                             e.printStackTrace();
+                            return Stream.empty();
                         }
-                        return Stream.empty();
                     })
                     .map(f -> Integer.valueOf(f.toFile().getName().split("\\.")[0].substring(1)))
                     .sorted().collect(Collectors.toList());
@@ -51,11 +51,11 @@ public class Contents {
                 for (int k = 0; k < 100 && i <= max; k++, i++) {
                     if (set.contains(i)) {
                         int[] range = getRange(i);
-                        out.write("[" + i + "]" + "(" + "./src/S" + range[0] + "_" + range[1] + "/S" + i + ".java)");
+                        out.write("[" + i + "]" + "(./src/S" + range[0] + "_" + range[1] + "/S" + i + ".java)");
                     } else {
                         out.write(i + "");
                     }
-                    out.write(i % 10 == 0 ? "\n\n" : ", ");
+                    out.write(i % 20 == 0 ? "\n\n" : ", ");
                 }
 
             }
