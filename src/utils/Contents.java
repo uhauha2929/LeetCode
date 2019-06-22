@@ -99,6 +99,6 @@ public class Contents {
 
 
     public static void main(String[] args) {
-        new Contents().build("./src");
+        new Contents().build(System.getProperty("user.dir") + "\\src");
     }
 }

@@ -38,16 +38,16 @@ public class S720 {
 
     class Trie {
 
-        Node[] children;
+        Node root = new Node('^');
 
         Trie() {
-            children = new Node[26];
+            root.children = new Node[26];
         }
 
         void insert(String word) {
             if (word == null || word.length() == 0)
                 return;
-            insert(0, word.toCharArray(), children);
+            insert(0, word.toCharArray(), root.children);
         }
 
         private void insert(int l, char[] chars, Node[] children) {
@@ -55,12 +55,13 @@ public class S720 {
             if (children[i] == null) {
                 children[i] = new Node(chars[l]);
             }
+            if (children[i].children == null) {
+                children[i].children = new Node[26];
+            }
             if (l == chars.length - 1) {
                 children[i].end = true; // 设置最后一个字符的结束标志
-                return; // 最后一个字符的children=null
+                return;
             }
-            if (children[i].children == null)
-                children[i].children = new Node[26];
             insert(l + 1, chars, children[i].children);
         }
     }
@@ -71,18 +72,18 @@ public class S720 {
         Trie trie = new Trie();
         for (String word : words)
             trie.insert(word);
-        searchLongestWord(new StringBuilder(), trie.children);
+        searchLongestWord(new StringBuilder(), trie.root);
         return longestWord;
     }
 
-    private void searchLongestWord(StringBuilder sb, Node[] children) {
-        if (children == null) return;
-        for (Node node : children) {
+    private void searchLongestWord(StringBuilder sb, Node root) {
+        if (root == null) return;
+        for (Node node : root.children) {
             if (node != null && node.end) { // 该节点必须为某个单词的结束字符
                 sb.append(node.val);
                 if (sb.length() > longestWord.length())
                     longestWord = sb.toString();
-                searchLongestWord(sb, node.children);
+                searchLongestWord(sb, node);
                 sb.deleteCharAt(sb.length() - 1);
             }
         }

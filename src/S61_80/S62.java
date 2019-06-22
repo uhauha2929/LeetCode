@@ -20,7 +20,12 @@ package S61_80;
  */
 public class S62 {
 
-    // 动态规划
+    /**
+     * 动态规划
+     * 令 dp[i][j]为到达位置i,j的路径数目
+     * 动态方程：dp[i][j] = dp[i-1][j] + dp[i][j-1]
+     * 对于第一行 dp[0][j], 或者第一列 dp[i][0], 由于都是在边界, 所以只能为 1
+     */
     public int uniquePaths(int m, int n) {
         int[][] dp = new int[m][n];
         for (int i = 0; i < m; i++) {
@@ -34,7 +39,11 @@ public class S62 {
         return dp[m - 1][n - 1];
     }
 
-    // 组合 C(n,m)=n!/(m!(n-m)!)
+    /**
+     * 排列组合
+     * C(n,m)=n!/(m!(n-m)!)
+     * 总共会走m+n-2步, 从中挑m-1步向下走
+     */
     public int uniquePaths2(int m, int n) {
         int N = m + n - 2;
         int M = m < n ? m - 1 : n - 1;
