@@ -31,7 +31,7 @@ public class S677 {
         }
 
         // 仅代表前缀树的根节点
-        private Node root = new Node('^');
+        private Node root = new Node('/');
 
         public MapSum() {
             root.children = new Node[26];
@@ -40,25 +40,7 @@ public class S677 {
         public void insert(String key, int val) {
             if (key == null || key.length() == 0)
                 return;
-            // 非递归插入
-            char[] arr = key.toCharArray();
-            Node[] cur = root.children;
-            for (int i = 0; i < arr.length; i++) {
-                int index = arr[i] - 'a';
-                if (cur[index] == null) {
-                    cur[index] = new Node(arr[i]);
-                }
-                if (cur[index].children == null) {
-                    cur[index].children = new Node[26];
-                }
-                if (i == arr.length - 1) {
-                    cur[index].val = val;
-                    cur[index].end = true;
-                    break;
-                }
-                cur = cur[index].children;
-            }
-//            insert(0, key.toCharArray(), root.children, val);
+            insert(0, key.toCharArray(), root.children, val);
         }
 
         // 递归插入, d为深度也即前缀字符串当前位置的下标

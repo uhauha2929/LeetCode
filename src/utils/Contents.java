@@ -23,7 +23,7 @@ public class Contents {
                 "\n" +
                 "Java 11\n" +
                 "\n" +
-                "部分题目提供了多种解法, 包括网友的解答和自己的解答.\n\n";
+                "部分题目整理提供了多种解法, 包括官网的解答, 网友的解答和自己的解答.\n\n";
 
         try (Stream<Path> dirs = Files.list(Paths.get(path));
              BufferedWriter out = new BufferedWriter(new FileWriter(new File("./README.md")))
