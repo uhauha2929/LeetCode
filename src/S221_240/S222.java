@@ -1,6 +1,6 @@
 package S221_240;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 给出一个完全二叉树，求出该树的节点个数。

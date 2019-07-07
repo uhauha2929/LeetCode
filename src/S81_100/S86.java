@@ -1,6 +1,6 @@
 package S81_100;
 
-import utils.ListNode;
+import util.ListNode;
 
 /**
  * 给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。

@@ -1,6 +1,6 @@
 package S1001_1020;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 返回与给定先序遍历 preorder 相匹配的二叉搜索树（binary search tree）的根结点。

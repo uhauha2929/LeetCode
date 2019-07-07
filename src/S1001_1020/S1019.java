@@ -1,6 +1,6 @@
 package S1001_1020;
 
-import utils.ListNode;
+import util.ListNode;
 
 import java.util.*;
 

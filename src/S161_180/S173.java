@@ -1,6 +1,6 @@
 package S161_180;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.Stack;
 

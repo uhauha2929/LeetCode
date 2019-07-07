@@ -1,6 +1,6 @@
 package S981_1000;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.*;
 

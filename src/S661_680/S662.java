@@ -1,6 +1,6 @@
 package S661_680;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

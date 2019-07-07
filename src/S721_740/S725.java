@@ -1,6 +1,6 @@
 package S721_740;
 
-import utils.ListNode;
+import util.ListNode;
 
 /**
  * 给定一个头结点为 root 的链表, 编写一个函数以将链表分隔为 k 个连续的部分。

@@ -1,4 +1,4 @@
-package utils;
+package util;
 
 // 单链表
 public class ListNode {

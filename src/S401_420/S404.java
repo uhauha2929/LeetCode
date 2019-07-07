@@ -1,6 +1,6 @@
 package S401_420;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 计算给定二叉树的所有左叶子之和。

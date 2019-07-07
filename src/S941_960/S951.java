@@ -1,6 +1,6 @@
 package S941_960;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 我们可以为二叉树 T 定义一个翻转操作，如下所示：选择任意节点，然后交换它的左子树和右子树。

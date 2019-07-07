@@ -1,6 +1,6 @@
 package S1061_1080;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 给定一棵二叉树的根 root，请你考虑它所有 从根到叶的路径：从根到任何叶的路径。（所谓一个叶子节点，就是一个没有子节点的节点）

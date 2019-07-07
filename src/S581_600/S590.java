@@ -1,6 +1,6 @@
 package S581_600;
 
-import utils.Node;
+import util.Node;
 
 import java.util.ArrayList;
 import java.util.Collections;

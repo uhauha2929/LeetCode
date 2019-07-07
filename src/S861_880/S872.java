@@ -1,6 +1,6 @@
 package S861_880;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

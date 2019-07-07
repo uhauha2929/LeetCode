@@ -1,6 +1,6 @@
 package S981_1000;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 最大树定义：一个树，其中每个节点的值都大于其子树中的任何其他值。

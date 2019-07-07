@@ -1,6 +1,6 @@
 package S561_580;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 给定一个二叉树，计算整个树的坡度。

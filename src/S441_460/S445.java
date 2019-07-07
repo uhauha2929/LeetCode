@@ -1,6 +1,6 @@
 package S441_460;
 
-import utils.ListNode;
+import util.ListNode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

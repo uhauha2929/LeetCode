@@ -1,6 +1,6 @@
 package S221_240;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 翻转一棵二叉树。

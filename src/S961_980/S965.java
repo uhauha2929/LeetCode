@@ -1,6 +1,6 @@
 package S961_980;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。

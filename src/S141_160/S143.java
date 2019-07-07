@@ -1,6 +1,6 @@
 package S141_160;
 
-import utils.ListNode;
+import util.ListNode;
 
 import java.util.LinkedList;
 

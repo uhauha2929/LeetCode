@@ -1,6 +1,6 @@
 package S861_880;
 
-import utils.ListNode;
+import util.ListNode;
 
 /**
  * 给定一个带有头结点 head 的非空单链表，返回链表的中间结点。

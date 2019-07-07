@@ -1,6 +1,6 @@
 package S801_820;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 /**
  * 给定二叉树根结点 root ，此外树的每个结点的值要么是 0，要么是 1。

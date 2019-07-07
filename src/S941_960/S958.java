@@ -1,6 +1,6 @@
 package S941_960;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

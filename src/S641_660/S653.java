@@ -1,6 +1,6 @@
 package S641_660;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.HashSet;

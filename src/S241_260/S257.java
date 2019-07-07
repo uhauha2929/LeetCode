@@ -1,6 +1,6 @@
 package S241_260;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

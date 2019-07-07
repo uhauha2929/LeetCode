@@ -1,6 +1,6 @@
 package S61_80;
 
-import utils.ListNode;
+import util.ListNode;
 
 import java.util.Deque;
 import java.util.LinkedList;

@@ -1,6 +1,6 @@
 package S541_560;
 
-import utils.Node;
+import util.Node;
 
 import java.util.*;
 

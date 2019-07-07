@@ -1,6 +1,6 @@
 package S421_440;
 
-import utils.Node;
+import util.Node;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

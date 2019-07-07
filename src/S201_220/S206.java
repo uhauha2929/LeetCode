@@ -1,6 +1,6 @@
 package S201_220;
 
-import utils.ListNode;
+import util.ListNode;
 
 /**
  * 反转一个单链表。

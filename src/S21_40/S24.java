@@ -1,6 +1,6 @@
 package S21_40;
 
-import utils.ListNode;
+import util.ListNode;
 
 /**
  * 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。

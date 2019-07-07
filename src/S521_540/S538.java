@@ -1,6 +1,6 @@
 package S521_540;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.Stack;
 

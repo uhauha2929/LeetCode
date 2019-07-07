@@ -1,6 +1,6 @@
 package S621_640;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,6 +1,6 @@
 package S381_400;
 
-import utils.ListNode;
+import util.ListNode;
 
 /**
  * 给定一个单链表，随机选择链表的一个节点，并返回相应的节点值。保证每个节点被选的概率一样。

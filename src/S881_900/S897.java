@@ -1,6 +1,6 @@
 package S881_900;
 
-import utils.TreeNode;
+import util.TreeNode;
 
 import java.util.ArrayDeque;
 

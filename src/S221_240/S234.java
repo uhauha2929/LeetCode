@@ -1,6 +1,6 @@
 package S221_240;
 
-import utils.ListNode;
+import util.ListNode;
 
 /**
  * 请判断一个链表是否为回文链表。
