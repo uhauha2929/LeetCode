@@ -31,12 +31,14 @@ import java.util.Arrays;
 public class S547 {
 
     private int[] parent;
+    private int count;
 
-    // 并查集
+    // 并查集, 类似solution200
     public int findCircleNum(int[][] M) {
         int N = M.length;
+        count = N; // 初始化为总人数
         parent = new int[N];
-        // 默认初始化-1自己为根
+        // 默认初始化-1为根
         Arrays.fill(parent, -1);
 
         for (int i = 0; i < N; i++) {
@@ -46,20 +48,18 @@ public class S547 {
                 }
             }
         }
-        // 查找所有的根(值为-1)的个数即为集合的个数
-        int cnt = 0;
-        for (int id : parent) {
-            if (id == -1)
-                cnt++;
-        }
-        return cnt;
+        // 最后count即为朋友圈的个数, 例如总人数为3, 其中两个人为好友, 发生了1次合并, 朋友圈为2.
+        // 或者也可以查找所有的根(值为-1)的个数即为集合的个数
+        return count;
     }
 
     private void union(int x, int y) {
         int xp = findRoot(x);
         int yp = findRoot(y);
-        if (xp != yp)  // 如果已经在同一个集合中则不必合并
+        if (xp != yp) {
             parent[yp] = xp;
+            count--; // 如果真正发生合并, 计数减1
+        }
     }
 
     private int findRoot(int id) {

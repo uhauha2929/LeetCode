@@ -21,11 +21,15 @@ package S201_220;
 
 public class S208 {
 
-    private static class Trie {
+    public static class Trie {
 
-        private Node root = new Node('$');
+        private Node root = new Node('/');
 
-        class Node {
+        public Node getRoot() {
+            return root;
+        }
+
+        public class Node {
             Node[] children = new Node[26];
             char value;
             boolean isEnd;
