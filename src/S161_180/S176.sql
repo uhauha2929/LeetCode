@@ -29,11 +29,13 @@
 # (8) select
 # (9) distinct
 # (10) order by
+# (11) top
 
 SELECT MAX(Salary) SecondHighestSalary
 FROM Employee
 WHERE Salary < (SELECT MAX(Salary) FROM Employee);
 
+# 从offset 1开始返回limit 1个，即第二个
 SELECT (SELECT DISTINCT Salary
         FROM Employee
         ORDER BY Salary DESC
