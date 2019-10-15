@@ -1,4 +1,4 @@
-/**
+/*
 Employee 表包含所有员工信息，每个员工有其对应的工号 Id，姓名 Name，工资 Salary 和部门编号 DepartmentId 。
 +----+-------+--------+--------------+
 | Id | Name  | Salary | DepartmentId |

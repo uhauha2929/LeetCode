@@ -1,4 +1,4 @@
-/**
+/*
 编写一个 SQL 查询，查找所有至少连续出现三次的数字。
 +----+-----+
 | Id | Num |
@@ -21,7 +21,7 @@
 链接：https://leetcode-cn.com/problems/consecutive-numbers
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-# 要求id必须连续
+-- 要求id必须连续
 SELECT DISTINCT a.Num AS ConsecutiveNums
 FROM Logs a,
      Logs b,

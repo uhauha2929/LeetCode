@@ -18,19 +18,20 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
-# sql执行顺序
-# (1) from
-# (3) join
-# (2) on
-# (4) where
-# (5) group by(开始使用select中的别名, 后面的语句中都可以使用)
-# (6) avg,sum....
-# (7) having
-# (8) select
-# (9) distinct
-# (10) order by
-# (11) top
-
+/*
+sql执行顺序
+(1) from
+(3) join
+(2) on
+(4) where
+(5) group by(开始使用select中的别名, 后面的语句中都可以使用)
+(6) avg,sum....
+(7) having
+(8) select
+(9) distinct
+(10) order by
+(11) top
+*/
 SELECT MAX(Salary) SecondHighestSalary
 FROM Employee
 WHERE Salary < (SELECT MAX(Salary) FROM Employee);
