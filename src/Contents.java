@@ -52,9 +52,11 @@ public class Contents {
             out.write(preface);
             out.write("已完成数量: **" + filenames.size() + "**个\n\n---\n");
 
+            boolean emptyPackage = true;
+
+            StringBuilder line = new StringBuilder();
+
             for (int i = 1; i <= max; ) {
-                int j = i / 100;
-                out.write("### " + (j * 100 + 1) + "~" + (j + 1) * 100 + "\n\n");
 
                 for (int k = 0; k < 100 && i <= max; k++, i++) {
 
@@ -63,18 +65,27 @@ public class Contents {
                     for (String suffix : filenameMap.keySet()) {
                         if (filenameMap.get(suffix).contains(i)) {
                             int[] range = getRange(i);
-                            out.write("[" + i + "]" +
-                                    "(./src/S" + range[0] + "_" + range[1] + "/S"
-                                    + i + "." + suffix + ")");
+                            line.append("[").append(i).append("]")
+                                    .append("(./src/S")
+                                    .append(range[0]).append("_").append(range[1])
+                                    .append("/S").append(i).append(".")
+                                    .append(suffix).append(")").append(",");
+                            emptyPackage = false;
                             exist = true;
                         }
                     }
-                    if (!exist) out.write(i + "");
+                    if (!exist) line.append(i).append(",");
                     // 每行显示20个题目标号
-                    out.write(i % FILE_EACH_PACKAGE == 0 ? "\n\n" : ", ");
+                    if (i % FILE_EACH_PACKAGE == 0) {
+                        if (!emptyPackage) {
+                            out.write(line + "\n\n");
+                            emptyPackage = true;
+                        }
+                        line.delete(0, line.length());
+                    }
                 }
-
             }
+            out.write(line.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
