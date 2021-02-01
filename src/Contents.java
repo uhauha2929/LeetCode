@@ -39,7 +39,7 @@ public class Contents {
 
             // 所有题解的最大序号
             int max = filenames.stream()
-                    .mapToInt(s -> Integer.valueOf(s.split("\\.")[0].substring(1)))
+                    .mapToInt(s -> Integer.parseInt(s.split("\\.")[0].substring(1)))
                     .max().orElseThrow();
 
             // 根据文件类型分组
