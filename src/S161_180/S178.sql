@@ -26,6 +26,7 @@
 链接：https://leetcode-cn.com/problems/rank-scores
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
+--MySQL
 SELECT Score, (SELECT COUNT(DISTINCT score) FROM Scores WHERE score >= s.score) AS Rank
 FROM Scores s
 ORDER BY Score
@@ -45,3 +46,13 @@ from (
          join scores s2
 where s1.score = s2.score
 order by s1.rank;
+
+-- Oracle
+SELECT s.Score,t.rn Rank
+FROM (SELECT Score, ROWNUM rn
+      FROM (SELECT DISTINCT Score FROM Scores ORDER BY Score DESC)
+     ) t,Scores s
+WHERE s.Score = t.Score
+ORDER BY t.rn;
+
+SELECT Score, DENSE_RANK() OVER (ORDER BY Score DESC) Rank FROM Scores;

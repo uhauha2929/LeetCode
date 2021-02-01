@@ -19,9 +19,9 @@ public class Contents {
     public void build(String path) {
         String preface = "[LeetCode](https://leetcode-cn.com/problemset/all/)中文网编程题\n" +
                 "\n" +
-                "Java 11\n" +
+                "Java 15\n" +
                 "\n" +
-                "部分题目整理提供了多种解法, 包括自己的解答, 网友的解答以及官方的解答.\n\n";
+                "个人练习，部分题目整理提供了多种解法\n\n";
 
         try (Stream<Path> dirs = Files.list(Paths.get(path));
              BufferedWriter out = new BufferedWriter(new FileWriter(new File("./README.md")))
@@ -50,7 +50,7 @@ public class Contents {
 
             System.out.println(filenameMap.keySet());
             out.write(preface);
-            out.write("已完成数量: **" + filenames.size() + "**个\n\n---\n");
+            out.write("已完成: **" + filenames.size() + "**个\n\n---\n");
 
             boolean emptyPackage = true;
 
@@ -69,12 +69,12 @@ public class Contents {
                                     .append("(./src/S")
                                     .append(range[0]).append("_").append(range[1])
                                     .append("/S").append(i).append(".")
-                                    .append(suffix).append(")").append(",");
+                                    .append(suffix).append(")").append(", ");
                             emptyPackage = false;
                             exist = true;
                         }
                     }
-                    if (!exist) line.append(i).append(",");
+                    if (!exist) line.append(i).append(", ");
                     // 每行显示20个题目标号
                     if (i % FILE_EACH_PACKAGE == 0) {
                         if (!emptyPackage) {

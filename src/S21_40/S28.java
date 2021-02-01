@@ -17,10 +17,41 @@ package S21_40;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class S28 {
+    // kmp算法
+    public int strStr3(String haystack, String needle) {
+        if (needle.length() > haystack.length())
+            return -1;
 
-    public int strStr(String haystack, String needle) {
-        if (haystack == null || needle == null || needle.length() == 0)
-            return 0;
+        int n = haystack.length();
+        int m = needle.length();
+
+        int[] next_pos = new int[m + 1];
+        next_pos[0] = -1;
+
+        int i = 0;
+        int j = -1;
+        while (i < m) {
+            if (j == -1 || needle.charAt(i) == needle.charAt(j)) {
+                i++;
+                j++;
+                next_pos[i] = j;
+            } else {
+                j = next_pos[j];
+            }
+        }
+        i = 0; j = 0;
+        while (i < n && j < m) {
+            if (j == -1 || haystack.charAt(i) == needle.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                j = next_pos[j];
+            }
+        }
+        return j == m ? i - j : -1;
+    }
+
+    public int strStr2(String haystack, String needle) {
         if (needle.length() > haystack.length())
             return -1;
         int m = needle.length(), n = haystack.length();
@@ -37,11 +68,11 @@ public class S28 {
         return -1;
     }
 
-    public int strStr2(String haystack, String needle) {
+    public int strStr(String haystack, String needle) {
         return haystack.indexOf(needle);
     }
 
     public static void main(String[] args) {
-        System.out.println(new S28().strStr("llhellao", "lla"));
+        System.out.println(new S28().strStr3("llhellao", "lla"));
     }
 }

@@ -17,6 +17,7 @@
 链接：https://leetcode-cn.com/problems/nth-highest-salary
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
+-- MySQL
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
     SET n = N - 1;
@@ -27,3 +28,40 @@ BEGIN
         LIMIT n,1
     );
 END
+
+-- Oracle
+CREATE FUNCTION getNthHighestSalary(N IN NUMBER) RETURN NUMBER IS
+                                                        result NUMBER;
+BEGIN
+SELECT
+    CASE WHEN COUNT(*) < N THEN NULL ELSE MIN(Salary) END INTO result
+FROM
+    (SELECT DISTINCT(Salary) FROM Employee ORDER BY Salary DESC)
+WHERE ROWNUM <= N;
+RETURN result;
+END;
+
+---------------------------------------------------------------------------
+CREATE FUNCTION getNthHighestSalary(N IN NUMBER) RETURN NUMBER IS
+                                                        result NUMBER;
+BEGIN
+SELECT Salary INTO result
+FROM
+    (SELECT Salary, ROWNUM as num
+     FROM
+         (SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC)
+     WHERE ROWNUM <= N)
+WHERE num = N;
+RETURN result;
+END;
+----------------------------------------------------------------------------
+CREATE FUNCTION getNthHighestSalary(N IN NUMBER) RETURN NUMBER IS
+                                                        result NUMBER;
+BEGIN
+SELECT Salary INTO result
+FROM (
+         SELECT DISTINCT Salary, DENSE_RANK() OVER(ORDER BY Salary DESC ) AS rk
+         from Employee
+     ) where rk = N;
+RETURN result;
+END;
