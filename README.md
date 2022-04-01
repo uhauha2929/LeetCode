@@ -1,8 +1,6 @@
 [LeetCode](https://leetcode-cn.com/problemset/all/)中文网编程题
 
-Java 15
-
-个人练习，部分题目整理提供了多种解法
+Java 8
 
 已完成: **473**个
 
