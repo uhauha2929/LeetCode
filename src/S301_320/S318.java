@@ -28,11 +28,7 @@ public class S318 {
 
         int maxProduct = 0;
 
-        Arrays.sort(words, new Comparator<>() {
-            public int compare(String a, String b) {
-                return b.length() - a.length();
-            }
-        });
+        Arrays.sort(words, (a, b) -> b.length() - a.length());
 
         int[] flags = new int[words.length];
 

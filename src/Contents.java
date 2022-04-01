@@ -40,7 +40,7 @@ public class Contents {
             // 所有题解的最大序号
             int max = filenames.stream()
                     .mapToInt(s -> Integer.parseInt(s.split("\\.")[0].substring(1)))
-                    .max().orElseThrow();
+                    .max().getAsInt();
 
             // 根据文件类型分组
             Map<String, Set<Integer>> filenameMap = filenames.stream()
@@ -108,6 +108,6 @@ public class Contents {
 
 
     public static void main(String[] args) {
-        new Contents().build(System.getProperty("user.dir") + "\\src");
+        new Contents().build(System.getProperty("user.dir") + "/src");
     }
 }

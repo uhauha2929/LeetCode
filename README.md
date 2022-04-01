@@ -4,7 +4,7 @@ Java 15
 
 个人练习，部分题目整理提供了多种解法
 
-已完成: **472**个
+已完成: **473**个
 
 ---
 [1](./src/S1_20/S1.java), [2](./src/S1_20/S2.java), [3](./src/S1_20/S3.java), [4](./src/S1_20/S4.java), [5](./src/S1_20/S5.java), 6, [7](./src/S1_20/S7.java), [8](./src/S1_20/S8.java), [9](./src/S1_20/S9.java), 10, [11](./src/S1_20/S11.java), [12](./src/S1_20/S12.java), [13](./src/S1_20/S13.java), [14](./src/S1_20/S14.java), [15](./src/S1_20/S15.java), [16](./src/S1_20/S16.java), [17](./src/S1_20/S17.java), [18](./src/S1_20/S18.java), [19](./src/S1_20/S19.java), [20](./src/S1_20/S20.java), 
@@ -13,7 +13,7 @@ Java 15
 
 41, [42](./src/S41_60/S42.java), [43](./src/S41_60/S43.java), 44, 45, [46](./src/S41_60/S46.java), [47](./src/S41_60/S47.java), [48](./src/S41_60/S48.java), [49](./src/S41_60/S49.java), [50](./src/S41_60/S50.java), 51, 52, [53](./src/S41_60/S53.java), [54](./src/S41_60/S54.java), [55](./src/S41_60/S55.java), [56](./src/S41_60/S56.java), 57, [58](./src/S41_60/S58.java), [59](./src/S41_60/S59.java), [60](./src/S41_60/S60.java), 
 
-[61](./src/S61_80/S61.java), [62](./src/S61_80/S62.java), [63](./src/S61_80/S63.java), [64](./src/S61_80/S64.java), 65, [66](./src/S61_80/S66.java), [67](./src/S61_80/S67.java), 68, [69](./src/S61_80/S69.java), [70](./src/S61_80/S70.java), [71](./src/S61_80/S71.java), [72](./src/S61_80/S72.java), [73](./src/S61_80/S73.java), [74](./src/S61_80/S74.java), [75](./src/S61_80/S75.java), 76, [77](./src/S61_80/S77.java), [78](./src/S61_80/S78.java), [79](./src/S61_80/S79.java), [80](./src/S61_80/S80.java), 
+[61](./src/S61_80/S61.java), [62](./src/S61_80/S62.java), [63](./src/S61_80/S63.java), [64](./src/S61_80/S64.java), 65, [66](./src/S61_80/S66.java), [67](./src/S61_80/S67.java), 68, [69](./src/S61_80/S69.java), [70](./src/S61_80/S70.java), [71](./src/S61_80/S71.java), [72](./src/S61_80/S72.java), [73](./src/S61_80/S73.java), [74](./src/S61_80/S74.java), [75](./src/S61_80/S75.java), [76](./src/S61_80/S76.java), [77](./src/S61_80/S77.java), [78](./src/S61_80/S78.java), [79](./src/S61_80/S79.java), [80](./src/S61_80/S80.java), 
 
 81, [82](./src/S81_100/S82.java), [83](./src/S81_100/S83.java), 84, 85, [86](./src/S81_100/S86.java), 87, [88](./src/S81_100/S88.java), [89](./src/S81_100/S89.java), [90](./src/S81_100/S90.java), 91, [92](./src/S81_100/S92.java), 93, [94](./src/S81_100/S94.java), [95](./src/S81_100/S95.java), [96](./src/S81_100/S96.java), 97, [98](./src/S81_100/S98.java), 99, [100](./src/S81_100/S100.java), 
 

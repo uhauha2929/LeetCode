@@ -40,7 +40,11 @@ public class S824 {
                 sb.append(words[i].charAt(0));
             }
             sb.append("ma");
-            sb.append("a".repeat(i + 1));
+            StringBuilder a = new StringBuilder();
+            for (int j = 0; j < i + 1; j++) {
+                a.append('a');
+            }
+            sb.append(a);
             sb.append(' ');
         }
         return sb.deleteCharAt(sb.length() - 1).toString();
