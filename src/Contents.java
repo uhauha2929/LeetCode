@@ -19,7 +19,7 @@ public class Contents {
     public void build(String path) {
         String preface = "[LeetCode](https://leetcode-cn.com/problemset/all/)中文网编程题\n" +
                 "\n" +
-                "Java 15\n" +
+                "Java 8\n" +
                 "\n" +
                 "个人练习，部分题目整理提供了多种解法\n\n";
 

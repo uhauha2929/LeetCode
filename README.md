@@ -1,6 +1,6 @@
 [LeetCode](https://leetcode-cn.com/problemset/all/)中文网编程题
 
-Java 15
+Java 8
 
 个人练习，部分题目整理提供了多种解法
 
